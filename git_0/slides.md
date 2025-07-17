@@ -700,14 +700,90 @@ How do we share work with our peers?
 │                    │     │                    │    │                    │
 └────────────────────┘     └────────────────────┘    └────────────────────┘
 ```
+
+> When speaking from the perspective of a local repo,
+> we call the remote ranches by the remote alias first
 ---
-# Clone
+## Clone
+
+How to get a repo locally.
+
 ---
-# Workflows
+## Remote Tracking
+
+```
+
+┌─────────────────────────────────┐                       ┌─────────────────────────────────┐
+│                                 │                       │                                 │
+│                                 │                       │                                 │
+│                       ┌─────────┤                       ├─────────┐                       │
+│                       │  main   ├─────────────────────▶ │  main   │                       │
+│                       └─────────┤                       ├─────────┘                       │
+│                                 │                       │                                 │
+│                                 │                       │                                 │
+│                                 │                       │                                 │
+│                                 │                       │           Remote Repo           │
+│             My Repo             │                       │            (origin)             │
+│                                 │                       │                                 │
+│                                 │                       │                                 │
+│                                 │                       │                                 │
+│                                 │                       │                                 │
+│                       ┌─────────┤                       ├─────────┐                       │
+│                       │ feat/1  │─────────────────────▶ │ feat/1  │                       │
+│                       └─────────┤                       ├─────────┘                       │
+│                                 │                       │                                 │
+│                                 │                       │                                 │
+└─────────────────────────────────┘                       └─────────────────────────────────┘
+```
+
+> When speaking from the perspective of a local repo,
+> we call the remote branches by the remote alias first,
+> eg. main is tracking origin main
+
+---
+## Workflows
+
+- [Gitflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)
+- [Github Flow](https://docs.github.com/en/get-started/using-github/github-flow)
+- [Trunk Based Development (TBD)](https://trunkbaseddevelopment.com/)
+---
+## Github Flow
+
+```
+                                                                     Remote Repo
+┌─────────   My Repo   ───────────┐                       ┌───────     (origin)     ────────┐
+│                                 │                       │                                 │
+│                                 │                       │                                 │
+│                       ┌─────────┤                       ├─────────┐                       │
+│                       │  main   │                       │  main   │◀─┐                    │
+│                       └─────────┤                       ├─────────┘  │                    │
+│                                 │                       │            │                    │         ┌────────────────────────────────────────────┐
+│                                 │                       │            │                    │         │                                            │░
+│                                 │                       │                                 │         │  Step 2 is called a Pull Request OR Merge  │░
+│                                 │                       │    3. Maintainer merges         │         │ Request. This is NOT a git feature. It is, │░
+│                                 │                       │          branch.                │         │   however, a common git service provider   │░
+│                                 │                       │                                 │         │                  feature.                  │░
+│                                 │                       │            │                    │         │                                            │░
+│                                 │                       │            │                    │         │                                            │░
+│                                 │                       │            │                    │         └────────────────────────────────────────────┘░
+│                       ┌─────────┤                       ├─────────┐  │                    │          ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+│                       │ feat/1  │───1. Push Changes───▶ │ feat/1  │──┘                    │
+│                       └─────────┤                       ├─────────┘                       │
+│                                 │                       │                                 │
+│                                 │                       │                                 │
+└─────────────────────────────────┘                       └─────────────────────────────────┘
+                 │                                                         ▲
+                 │                                                         │
+                 └───────2. "Hey, I've added some changes to feat/1 ───────┘
+                        branch. Could you please review them and then
+                                merge into the main branch?"
+```
+
 ---
 ## Resources
 
 - [Docs](https://git-scm.com)
 - [OhShitGit](https://ohshitgit.com/)
 - [Git by example](https://antonz.org/git-by-example/)
+- [House Keeping](https://railsware.com/blog/git-clean-up-in-local-and-remote-branches/)
 - Just use the tool.
